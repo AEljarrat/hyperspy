@@ -4108,6 +4108,14 @@ class BaseSignal(FancySlicing,
             metadata=self.metadata.as_dictionary(),
             attributes={'_lazy': False})
 
+        # Duplicate code from __deepcopy__
+        if cs.metadata.has_item('Markers'):
+            temp_marker_dict = cs.metadata.Markers.as_dictionary()
+            markers_dict = markers_metadata_dict_to_markers(
+                temp_marker_dict,
+                cs.axes_manager)
+            cs.metadata.Markers = markers_dict
+
         if auto_filename is True and self.tmp_parameters.has_item('filename'):
             cs.tmp_parameters.filename = (self.tmp_parameters.filename +
                                           '_' +
