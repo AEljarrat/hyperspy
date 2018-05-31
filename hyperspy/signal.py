@@ -4112,11 +4112,9 @@ class BaseSignal(FancySlicing,
                 marker = markers_dict[marker_name]['_dtb_value_']
                 if marker.auto_update:
                     marker.axes_manager = self.axes_manager
-                    print(marker.name)
                     key_dict = {}
                     for key in marker.data.dtype.names:
                         key_dict[key] = marker.get_data_position(key)
-                    print(key_dict)
                     marker.set_data(**key_dict)
 
         cs = self.__class__(
