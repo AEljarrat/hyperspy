@@ -290,7 +290,7 @@ can be used as an external signal for the navigator.
 
 .. code-block:: python
 
-    >>> im = hs.load('Ni_superalloy_0*.tif', stack=True) 
+    >>> im = hs.load('Ni_superalloy_0*.tif', stack=True)
     >>> s = hs.load('Ni_superalloy_0*.rpl', stack=True).as_signal1D(0)
     >>> dim = s.axes_manager.navigation_shape
     >>> #Rebin the image
@@ -633,6 +633,14 @@ __ plot.spectra_
     other iterable type for the ``cmap`` argument together with ``'single'``
     for the ``colorbar`` argument. Such an input will cause a warning and
     instead set the ``colorbar`` argument to ``None``.
+
+.. versionadd: 1.4
+    Double-clicking into an axis in the panel created by ``plot_images``
+    triggers a plot event, creating a new figure in which the selected signal is
+    presented alone. This helps navigating through panels with many figures by
+    selecting and enlarging some of them and allowing comfortable zooming. This
+    functionality is only enabled if a ``matplotlib`` backend that supports the
+    ``button_press_event`` in the figure canvas is being used.
 
 .. _plot.spectra:
 
@@ -1170,7 +1178,7 @@ Permanent markers are stored in the HDF5 file if the signal is saved:
 
     >>> s = hs.signals.Signal2D(np.arange(100).reshape(10, 10))
     >>> marker = hs.markers.point(2, 1, color='red')
-    >>> s.add_marker(marker, plot_marker=False, permanent=True) 
+    >>> s.add_marker(marker, plot_marker=False, permanent=True)
     >>> s.metadata.Markers
     └── point = <marker.Point, point (x=2,y=1,color=red,size=20)>
     >>> s.save("storing_marker.hdf5")
