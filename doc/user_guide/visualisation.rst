@@ -10,7 +10,7 @@ instance, has a :py:meth:`~.signal.BaseSignal.plot` method that is powerful and
 flexible tools to visualize n-dimensional data. In this chapter, the
 visualisation of multidimensional data  is exemplified with two experimental
 datasets: an EELS spectrum image and an EDX dataset consisting of a secondary
-electron emission image stack and a 3D hyperspectrum , both simoultaneously
+electron emission image stack and a 3D hyperspectrum , both simultaneously
 acquired by recording two signals in parallel in a FIB/SEM.
 
 
@@ -150,7 +150,7 @@ arguments are supported as well:
 
 .. versionadded:: 1.1.2
 
-Same options can be passed to the navigator, albeit separatelly, by specifying
+Same options can be passed to the navigator, albeit separately, by specifying
 them as a dictionary in ``navigator_kwds`` argument when plotting:
 
 .. code-block:: python
@@ -966,7 +966,7 @@ Markers
 
 .. versionadded:: 0.8
 
-Hyperspy provides an easy access to the main marker of matplotlib. The markers
+HyperSpy provides an easy access to the main marker of matplotlib. The markers
 can be used in a static way
 
 .. code-block:: python
