@@ -682,11 +682,7 @@ def plot_images(images,
     elif label is 'auto':
         # Use some heuristics to try to get base string of similar titles
 
-        # in case of single image
-        if isinstance(images, list) or len(images) > 1:
-            label_list = [x.metadata.General.title for x in images]
-        else:
-            label_list = [images.metadata.General.title]
+        label_list = [x.metadata.General.title for x in images]
 
         # Find the shortest common string between the image titles
         # and pull that out as the base title for the sequence of images
@@ -1037,9 +1033,11 @@ def plot_images(images,
     # Replot: connect function
     def on_dblclick(event):
         # On the event of a double click, replot the selected subplot
-        if not event.inaxes: return
-        if not event.dblclick: return
-        subplots = [axi for axi in f.axes if type(axi) is mpl.axes.Subplot]
+        if not event.inaxes:
+            return
+        if not event.dblclick:
+            return
+        subplots = [axi for axi in f.axes if isinstance(axi, mpl.axes.Subplot)]
         inx = list(subplots).index(event.inaxes)
         im = replot_ims[inx]
 
@@ -1394,6 +1392,7 @@ def animate_legend(figure='last'):
         figure.canvas.draw_idle()
 
     figure.canvas.mpl_connect('pick_event', onpick)
+
 
 def plot_histograms(signal_list,
                     bins='freedman',
